@@ -14,7 +14,7 @@ Feature: Title of your feature
     When I provide username and password
 
     Examples:
-    ##Feature.xlsx@Sheet1
+    ##Feature.xlsx@Sheet1 
 
   @tag3
   Scenario Outline: Search in Google

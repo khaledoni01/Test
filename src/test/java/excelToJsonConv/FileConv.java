@@ -22,6 +22,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.jayway.jsonpath.JsonPath;
@@ -29,32 +34,76 @@ import com.jayway.jsonpath.JsonPath;
 
 public class FileConv {
 
+public static WebDriver driver;
+	
 	@Test(priority = 0)
-	public void jsonReading() {
-		String jsonPath = "C:/Users/User/Desktop/dest.json";
+	public void init() {		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/browser/chromedriver_76.exe");
+		driver = new ChromeDriver();  
+	    driver.get("https://www.facebook.com/");
+	}
+	
+	@Test(priority = 1, dataProvider="jsonData")
+	public void login(String fName, String lName) {
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].setAttribute('type', 'text');", 
+				driver.findElement(By.name("pass")));
+        
+        driver.findElement(By.name("email")).clear();
+        driver.findElement(By.name("email")).sendKeys(fName);
+        driver.findElement(By.name("pass")).clear();
+        driver.findElement(By.name("pass")).sendKeys(lName);
+        try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@DataProvider(name="jsonData")
+	public Object[][] jsonReading() {
+		String jsonPath = "src/test/java/excelToJsonConv/dest.json";
 		JSONParser jsonParser = new JSONParser();
 		
+		Object[][] tObj = null; // Row:3, Col:2
+
 		try (FileReader reader = new FileReader(jsonPath)){
 			Object obj = jsonParser.parse(reader);
 			
 //			Map<String, String> wb = JsonPath.read(obj, "$");
 //			System.out.println(wb.keySet());
-			List<List<String>> cols = JsonPath.read(obj, "$.Info[*]"); //Column
-			System.out.println(cols);//.get(0).get(0)
-			List<String> rows = JsonPath.read(obj, "$.Info.FirstName"); //Row
-			System.out.println(rows);//.get(0)			
+			List<List<String>> cols = JsonPath.read(obj, "$.Login[*]"); //Column
+//			System.out.println(cols.size());
+//			List<String> rows = JsonPath.read(obj, "$.Login.Username"); //Row
+//			System.out.println(rows.size());
+			
+			tObj = new Object[cols.get(0).size()][cols.size()]; // Row:3, Col:2
+
+			for(int r=0; r<cols.get(0).size(); r++) {
+				for(int c=0; c<cols.size(); c++) {
+					tObj[r][c] = cols.get(c).get(r);
+				}
+			}
+			
+//			print out the returned values
+//			for(int i=0; i<tObj.length; i++) {	
+//				for(int j=0; j<tObj[0].length; j++) {
+//					System.out.println(tObj[i][j]);
+//				}
+//			}
 						
-		} catch(IOException | ParseException e) {
-			e.getMessage();
+		}catch(IOException | ParseException e) {
+			e.printStackTrace();
 		}
-		
-		
+
+		return tObj;	
 	}
 	
-//	@Test(priority = 0)
+//	@Test(priority = 1)
 	public void excelToJson() {
-		String xcelPath = "C:/Users/User/Desktop/move.xlsx";
-		String jsonPath = "C:/Users/User/Desktop/dest.json";
+		String xcelPath = "src/test/java/excelToJsonConv/move.xlsx";
+		String jsonPath = "src/test/java/excelToJsonConv/dest.json";		
 		
 		JSONObject sheetObj = new JSONObject();
 		JSONArray sheetArray = new JSONArray();
@@ -116,12 +165,12 @@ sheetArray.add(sheetName);
 		   	    // Looping all rows
 		   	    while(rows.hasNext()) {
 			    	row = (XSSFRow) rows.next();
-			    	cell = row.getCell(cd, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);
+			    	cell = row.getCell(cd);
 			    				    	
    					if(c == 0) {
    						firstRow = getCellData(cell);
    						c++;
-   					}
+   					}   					
    					else if(row.getRowNum() > 0 && cell != null && c > 0) {
 		    			validCellValue = getCellData(cell);		
 rowArray.add(validCellValue);
@@ -175,6 +224,5 @@ sheetObj.put(sheetArray.get(0), colObj);
 		}
 		return cellData;
 	}
-
 
 }

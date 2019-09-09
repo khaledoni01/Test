@@ -29,7 +29,7 @@ public class TestPage {
     }
     
 	public TestPage launch() {
-        driver.get("file:///C:/Users/User/Desktop/index.html");
+        driver.get("file:///"+System.getProperty("user.dir")+"/src/test/java/popup/index.html");
         System.out.println("Launching Driver");
         return this;
 	}
@@ -79,7 +79,7 @@ public class TestPage {
 //	  	  .closePopup();
     }
     
-//    @Test(priority = 0)
+    @Test(priority = 0)
     public void testOne() throws Exception {
     	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/browser/chromedriver_76.exe");
     	WebDriver driver = new ChromeDriver();  

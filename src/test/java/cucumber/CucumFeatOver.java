@@ -34,7 +34,6 @@ public class CucumFeatOver {
 	}
 
 	public void overrideFeatFile() {
-//		String actScen = "Login to Facebook";// Search in Google
 		String featPath = "src/test/java/cucumber/new2.feature";
 		String featTxt = "src/test/java/cucumber/new2.txt";
 		String ll = null;
@@ -43,7 +42,7 @@ public class CucumFeatOver {
 		
 		try {
 			featRead = new BufferedReader(new InputStreamReader(new BufferedInputStream(new FileInputStream(featPath)), "UTF-8"));
-			featWrite = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(featTxt, false), "UTF-8")); // true
+			featWrite = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(featTxt, false), "UTF-8")); // true to append
 		} catch (UnsupportedEncodingException | FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
@@ -94,7 +93,7 @@ System.out.println(line);
 	}
 
 	public static List<ArrayList<String>> readExcelFile(String scen, String xcelfileName, String sheetName) {
-		String xcelPath = "C:/Users/User/Desktop/"+xcelfileName;
+		String xcelPath = "src/test/java/cucumber/"+xcelfileName;
 		FileInputStream excelFile = null;
 		XSSFWorkbook wb = null;
 		XSSFSheet sheet = null;

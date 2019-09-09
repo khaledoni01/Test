@@ -1,0 +1,38 @@
+{
+	"Empty": {
+		
+	},
+	"Login": {
+		"Username": [
+			"khaledoni",
+			"jannatt38",
+			"enazmehedi"
+		],
+		"Password": [
+			"123456",
+			"987777",
+			"847478"
+		]
+	},
+	"Info": {
+		"Address": [
+			"110 Old St"
+		],
+		"FirstName": [
+			"Khaled",
+			"Enaz"
+		],
+		"LastName": [
+			"Zaman",
+			"Mehedi"
+		]
+	},
+	"Addr": {
+		"Email": [
+			"a.b@mail.com"
+		],
+		"Address": [
+			"11092 street"
+		]
+	}
+}
