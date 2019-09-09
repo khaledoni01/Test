@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="SuiteTwo">
+
+	<listeners>
+		<listener class-name="pageTest.TestListener" />
+		<listener class-name="pageTest.AnnotationTransformer" />
+	</listeners>
+
+	<parameter name="browser" value="Chrome" />
+
+	<test name="TestTwo">
+	
+		<groups>
+			<define name="all">
+				<include name="regression"></include>
+				<include name="sanity"></include>
+				<include name="testTwo"></include>
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+
+		<classes>
+			<class name="pageTest.weCare.ClassTwo" />
+		</classes>
+
+	</test>
+
+</suite>
