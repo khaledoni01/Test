@@ -1,2 +1,10 @@
-INFO  | 2019-09-04 10:08:58 | [main] testUtil.Log (Log.java:11) - Excel File is opened
-INFO  | 2019-09-04 10:08:58 | [main] testUtil.Log (Log.java:11) - Excel File is closed
+INFO  | 2019-09-16 15:31:21 | [main] testUtil.Log (Log.java:11) - On Start: TestOne
+INFO  | 2019-09-16 15:31:21 | [main] pageTest.TestListener (TestListener.java:21) - Test started: hello1
+INFO  | 2019-09-16 15:31:21 | [main] testUtil.Log (Log.java:11) - Test Succeded: hello1
+INFO  | 2019-09-16 15:31:21 | [main] pageTest.TestListener (TestListener.java:21) - Test started: hello2
+INFO  | 2019-09-16 15:31:21 | [main] testUtil.Log (Log.java:11) - Test Skipped: hello2
+INFO  | 2019-09-16 15:31:21 | [main] pageTest.TestListener (TestListener.java:21) - Test started: hello2
+INFO  | 2019-09-16 15:31:21 | [main] testUtil.Log (Log.java:11) - Test Failed: hello2
+INFO  | 2019-09-16 15:31:21 | [main] pageTest.TestListener (TestListener.java:21) - Test started: hello3
+INFO  | 2019-09-16 15:31:21 | [main] testUtil.Log (Log.java:11) - Test Succeded: hello3
+INFO  | 2019-09-16 15:31:22 | [main] testUtil.Log (Log.java:11) - On End: TestOne

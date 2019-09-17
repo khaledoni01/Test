@@ -1,18 +1,10 @@
 package pageTest;
 
-
-import java.io.File;
-import java.io.IOException;
-
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import com.relevantcodes.extentreports.LogStatus;
 import pageTest.testUtil.Log;
-
 
 public class TestListener extends TestBase implements ITestListener {
 
@@ -31,17 +23,17 @@ public class TestListener extends TestBase implements ITestListener {
 	public void onTestFailure(ITestResult result) {
 		Log.info("Test Failed: " + result.getName());
 		
-		String filePath = System.getProperty("user.dir")+"/screenshot/failed_"+ result.getMethod().getMethodName()+".png";
-		TakesScreenshot scrShot = (TakesScreenshot) driver;
-		File scrFile= scrShot.getScreenshotAs(OutputType.FILE);
-		File desFile = new File(filePath);
-		try {
-			FileUtils.copyFile(scrFile, desFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-        String base64Screenshot = "data:image/png;base64," + ((TakesScreenshot) TestBase.getDriver()).getScreenshotAs(OutputType.BASE64);
-        test.log(LogStatus.FAIL, "Test Case Failed is "+result.getName() + test.addBase64ScreenShot(base64Screenshot));
+//		String filePath = System.getProperty("user.dir")+"/screenshot/failed_"+ result.getMethod().getMethodName()+".png";
+//		TakesScreenshot scrShot = (TakesScreenshot) driver;
+//		File scrFile= scrShot.getScreenshotAs(OutputType.FILE);
+//		File desFile = new File(filePath);
+//		try {
+//			FileUtils.copyFile(scrFile, desFile);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//        String base64Screenshot = "data:image/png;base64," + ((TakesScreenshot) TestBase.getDriver()).getScreenshotAs(OutputType.BASE64);
+//        test.log(LogStatus.FAIL, "Test Case Failed is "+result.getName() + test.addBase64ScreenShot(base64Screenshot));
 		test.log(LogStatus.FAIL, "Test Case Failed is "+result.getThrowable());
 		extent.endTest(test);
 	}

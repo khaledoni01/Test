@@ -15,9 +15,9 @@
     <classes>
       <class name="pageTest.weCare.ClassOne">
         <methods>
-          <include name="jello"/>
           <include name="setupDriver"/>
           <include name="tearDownExtentReport"/>
+          <include name="hello2"/>
           <include name="setupExtentReport"/>
         </methods>
       </class> <!-- pageTest.weCare.ClassOne -->

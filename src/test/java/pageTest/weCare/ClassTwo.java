@@ -10,11 +10,11 @@ public class ClassTwo extends TestBase {
 
 	@Test(priority = 0, groups = "testTwo")
 	public void apple() {		
-		System.out.println("Test Two");
+		System.out.println("Test Two apple()");
 	}
 	@Test(priority = 1, groups = "testTwo")
 	public void tomato() {		
-		System.out.println("Test Two");
+		System.out.println("Test Two tomato()");
 	}
 
 }
