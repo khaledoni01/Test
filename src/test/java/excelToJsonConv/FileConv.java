@@ -100,7 +100,7 @@ public static WebDriver driver;
 		return tObj;	
 	}
 	
-//	@Test(priority = 1)
+//	@Test(priority = 0)
 	public void excelToJson() {
 		String xcelPath = "src/test/java/excelToJsonConv/move.xlsx";
 		String jsonPath = "src/test/java/excelToJsonConv/dest.json";		

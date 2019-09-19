@@ -35,14 +35,14 @@ public class CucumFeatOver {
 
 	public void overrideFeatFile() {
 		String featPath = "src/test/java/cucumber/new2.feature";
-		String featTxt = "src/test/java/cucumber/new2.txt";
+		String featTxt = "src/test/java/cucumber/new2.feature";
 		String ll = null;
 		BufferedReader featRead = null;
 		BufferedWriter featWrite = null;
 		
 		try {
 			featRead = new BufferedReader(new InputStreamReader(new BufferedInputStream(new FileInputStream(featPath)), "UTF-8"));
-			featWrite = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(featTxt, false), "UTF-8")); // true to append
+//			featWrite = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(featTxt, false), "UTF-8")); // true to append
 		} catch (UnsupportedEncodingException | FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
@@ -80,6 +80,12 @@ public class CucumFeatOver {
 System.out.println(line);
 			featRead.close();
 			System.out.println(">>Feature File is closed after reading");
+			try {
+//				featRead = new BufferedReader(new InputStreamReader(new BufferedInputStream(new FileInputStream(featPath)), "UTF-8"));
+				featWrite = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(featTxt, false), "UTF-8")); // true to append
+			} catch (UnsupportedEncodingException | FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
 
 			featWrite.write(line);
 			featWrite.close();
