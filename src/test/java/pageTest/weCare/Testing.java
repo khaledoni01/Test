@@ -15,9 +15,11 @@ public class Testing {
     public void test() {
 	    Calendar cal = Calendar.getInstance();
 	    System.out.println("Today : " + cal.getTime());
+	    
 	    cal.add(Calendar.DATE, -30);
 	    System.out.println(cal.getTime());
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+
+	    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 		String modDate = sdf.format(cal.getTime());
 		System.out.println(modDate);
 	}
