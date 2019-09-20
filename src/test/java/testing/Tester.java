@@ -1,3 +1,4 @@
+package testing;
 
 import java.io.File;
 import java.io.IOException;
@@ -5,7 +6,7 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 
 
-public class tester {
+public class Tester {
 
 	public static void main(String[] args) {
 		
