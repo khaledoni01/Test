@@ -10,11 +10,28 @@ public class Tester {
 
 	public static void main(String[] args) {
 		
+		
 		try {
-			FileUtils.cleanDirectory(new File("C:/Users/User/Desktop/Del/*.txt"));
-		} catch (IOException e) {
-			e.printStackTrace();
+			int a = 10;
+			int b = 0;
+			int c = a / b;			
+			System.out.println("Num: " + c);
 		}
+		catch(ArithmeticException msg) {
+//			System.out.println(msg.getMessage());
+			System.out.println("()()()(()(");
+//			msg.printStackTrace();
+		}
+		
+		System.out.println("hello");
+		
+		
+		
+//		try {
+//			FileUtils.cleanDirectory(new File("C:/Users/User/Desktop/Del/*.txt"));
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		
 	}
 
