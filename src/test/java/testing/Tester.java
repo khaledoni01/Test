@@ -2,6 +2,8 @@ package testing;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 
@@ -10,22 +12,35 @@ public class Tester {
 
 	public static void main(String[] args) {
 		
+		int[] dupArr = {10, 20, 5, 10, 39, 40, 10, 20, 33, 33, 45, 40};
+		Set<Integer> st = new HashSet<Integer>();
 		
-		try {
-			int a = 10;
-			int b = 0;
-			int c = a / b;			
-			System.out.println("Num: " + c);
+		for(int i=0; i<dupArr.length; i++) {
+			
+			for(int j=i+1; j<dupArr.length; j++) {
+				
+				if(dupArr[i]==dupArr[j]) {
+					st.add(dupArr[j]);
+				}
+			}			
 		}
-		catch(ArithmeticException msg) {
-//			System.out.println(msg.getMessage());
-			System.out.println("()()()(()(");
-//			msg.printStackTrace();
+		for(int s : st) {
+			System.out.println("Duplicate: " + s);
 		}
 		
-		System.out.println("hello");
 		
 		
+//		int[] maxArr = {10, 20, 5, 10, 39, 40, 10};
+//		int max = maxArr[0];
+//		
+//		for(int i=0; i<maxArr.length; i++) {
+//			
+//			if(maxArr[i]> max) {
+//				max = maxArr[i];
+//			}
+//		}
+//		System.out.println(max);
+				
 		
 //		try {
 //			FileUtils.cleanDirectory(new File("C:/Users/User/Desktop/Del/*.txt"));
