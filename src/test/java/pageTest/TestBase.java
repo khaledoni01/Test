@@ -52,7 +52,7 @@ public class TestBase {
 		System.out.println("Before Suite");
 //		driver = TestBase.openBrowser(browser);
 //		String baseURL = Utility.propertiesFile(Utility.PropFilePath).getProperty("baseURL");
-//		Log.info("Driver is launched");
+//		Log.info(browser + " is Launched");
 //		
 //		driver.manage().deleteAllCookies();
 //		driver.manage().window().maximize();
@@ -104,12 +104,12 @@ public class TestBase {
 //			} catch (MalformedURLException e) {
 //			e.printStackTrace();
 //		}
-			Log.info("Chrome Driver is initiated");
+			Log.info(browserName + " Driver is Initiated");
 			
 		}else if (browserName.contains("Firefox")) {
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/browser/geckodriver.exe");
 			driver = new FirefoxDriver();
-			Log.info("Firefox Driver is initiated");
+			Log.info(browserName + " Driver is Initiated");
 			
 		}else if (browserName.contains("IE")) {
 			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"/browser/IEDriverServer_32.exe");
@@ -117,7 +117,7 @@ public class TestBase {
 			caps.ignoreZoomSettings();
 			caps.disableNativeEvents();
 			driver = new InternetExplorerDriver(caps);
-			Log.info("IE Driver is initiated");
+			Log.info(browserName + " Driver is Initiated");
 		}
 		return driver;
 	}
