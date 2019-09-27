@@ -4,11 +4,11 @@
 <suite name="suiteOfSuites">
 
 	<suite-files>
-		<suite-file path="testngOne.xml" />
+		<suite-file path="testngFile/testngOne.xml" />
 	</suite-files>
 
 </suite>
 <!-- 
-<suite-file path="testngTwo.xml" />
+<suite-file path="testngFile/testngTwo.xml" />
 
 -->
